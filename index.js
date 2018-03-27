@@ -131,15 +131,7 @@ function getCredentials(userTokens, callback) {
   var logins = {};
   var idToken = userTokens.idToken;
   var accessToken = userTokens.accessToken;
-
-  logins[
-    "cognito-idp." + argv.cognitoRegion + ".amazonaws.com/" + argv.userPoolId
-  ] = idToken;
-
-  AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: argv.identityPoolId,
-    Logins: logins
-  });
+  console.log(idToken);
 
   AWS.config.credentials.get(function(err) {
     if (err) {
@@ -147,7 +139,7 @@ function getCredentials(userTokens, callback) {
       return;
     }
 
-    callback(userTokens);
+    //callback(userTokens);
   });
 }
 
